@@ -115,124 +115,195 @@ const scrollToSection = (sectionId: string) => {
 </template>
 
 <style scoped>
-
-
-
-.batman {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.icon-home {
-    color: slateblue;
-    width: 3rem;
-    height: 48px;
-}
-
-.icon-home:hover {
-    color: white;
-    background-color: slateblue;
-}
-
-.extra-nav {
-  background-color: white;
-  opacity: 0.7;
-  box-shadow: rgba(0, 0, 0, 0.7);
-  position: fixed;
-  top: 0;
-  width: 11rem;
-  border-radius: 0 0 1rem 0;
-  z-index: 1;
-}
-
-@media (min-width: 640px){
-  .extra-nav {
-    width: 100%;
-    border-radius: 0;
-    opacity: 1;
-    left: 0;
-  }
-}
-
-.titulus-img {
-  background-size: 100% 100%;
-  background-position: center center;
-  background-image: url("../imagines/batman/batman.jpg");
-  min-height: 100vh;
-}
-
-.titulus-img:hover {
-  background-size: 115% 115%;
-}
-
-.titulus > h1 {
-  position: absolute;
-  top: 63%;
-  width: 100%;
-  text-align: center;
-  font-size: 5rem; 
-  color: white;
-  pointer-events:none; 
-  font-family: batman;
-}
-
-.titulus > p {
-  position: absolute;
-  top: 36%;
-  width: 100%;
-  text-align: center;
-  font-size: 2rem;
-  color: white;
-  pointer-events:none;
-  display: none;
-  font-family: batman;
-}
-
-
-@media (min-width:768px) {
-    .titulus > p {
-        display: block;
+    .batman {
+        font-family: Arial, Helvetica, sans-serif;
     }
-}
 
-#vehiculis {
-  max-width: 510px;
-  margin: 0 auto;
-  padding: 4rem 0;
-}
+    .icon-home {
+        color: slateblue;
+        width: 3rem;
+        height: 48px;
+    }
 
-.vehiculis-titulus {
-  height: 5.5rem; /* 88px */
-  font-size: 2rem;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-}
+    .icon-home:hover {
+        color: white;
+        background-color: slateblue;
+    }
 
-.item {
-  padding: 1.5rem 0;
-  height: 500px;
-}
+    .extra-nav {
+    background-color: white;
+    opacity: 0.7;
+    box-shadow: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    width: 11rem;
+    border-radius: 0 0 1rem 0;
+    z-index: 1;
+    }
 
-.unus {
-  background-color: rgba(220, 220, 220, 0.2) ; 
-}
+    @media (min-width: 640px){
+    .extra-nav {
+        width: 100%;
+        border-radius: 0;
+        opacity: 1;
+        left: 0;
+    }
+    }
 
-.duo {
-  background-color: rgba(220, 220, 220, 0.8);
-}
+    .titulus-img {
+        background-size: 100% 100%;
+        background-position: center center;
+        background-image: url("../imagines/batman/batman.jpg");
+        min-height: 100vh;
+    }
 
-.tribus {
-  background-color: rgba(220, 220, 220, 0.8);
-}
- 
-.notitia > small {
-  font-weight: bold;
-  padding: 1rem;
-}
- 
-.notitia > h2 {
- font-size: 1.7rem; 
- font-weight: 600;
- color: rgba(0, 0, 0, 0.7);
- padding-bottom: 1rem;
-} 
+    .titulus-img:hover {
+        background-size: 115% 115%;
+    }
+
+    .titulus > h1 {
+        position: absolute;
+        top: 63%;
+        width: 100%;
+        text-align: center;
+        font-size: 5rem; 
+        color: white;
+        pointer-events:none; 
+        font-family: batman;
+    }
+
+    .titulus > p {
+        position: absolute;
+        top: 36%;
+        width: 100%;
+        text-align: center;
+        font-size: 2rem;
+        color: white;
+        pointer-events:none;
+        display: none;
+        font-family: batman;
+    }
+
+
+    @media (min-width:768px) {
+        .titulus > p {
+            display: block;
+        }
+    }
+    
+
+    #vehiculis {
+        max-width: 510px;
+        margin: 0 auto;
+        padding: 4rem 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .vehiculis-arca {
+        order: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .vehiculis-titulus {
+        height: 5.5rem; /* 88px */
+        font-size: 2rem;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .item {
+        padding: 1.5rem 0;
+        height: 540px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .item > img {
+        width: 450px;
+    }
+
+    .unus {
+        order: 2;
+        background-color: rgba(220, 220, 220, 0.2) ; 
+    }
+
+    .duo {
+        background-color: rgba(220, 220, 220, 0.8);
+    }
+
+    .tribus {
+        order: 3;
+        background-color: rgba(220, 220, 220, 0.8);
+    }
+    
+    .notitia {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .notitia > small {
+        font-weight: bold;
+        padding: 1rem;
+    }
+    
+    .notitia > h2 {
+        font-size: 1.7rem; 
+        font-weight: 600;
+        color: rgba(0, 0, 0, 0.7);
+        padding-bottom: 1rem;
+    } 
+
+    @media (min-width: 640px) {
+        #vehiculis {
+            max-width: 576px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        #vehiculis {
+            max-width: 900px;
+        }
+
+        .item {
+            flex-direction: row;
+            height: 320px;
+        }
+
+        .notitia {
+            width: 40%;
+        }
+
+        .unus > img {
+            order: -1;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        #vehiculis {
+            max-width: 1280px;
+        }
+
+        .item {
+            flex-direction: column;
+            height: 560px;
+        }
+
+        .vehiculis-arca {
+            flex-direction: row;
+        }
+
+        .notitia {
+            width: 90%;
+        }
+        
+    }
+
 </style>
