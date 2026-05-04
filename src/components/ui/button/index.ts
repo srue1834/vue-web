@@ -19,7 +19,7 @@ export const buttonVariants = cva(
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
-        tertiarius: "bg-emerald-500 text-secondary-foreground hover:bg-secondary/80",
+        tertiarius: "bg-white text-base border border-black hover:bg-[#ee3123] focus:bg-[#ee3123] rounded-none",
 
         
       },
@@ -30,6 +30,7 @@ export const buttonVariants = cva(
         "icon": "size-9",
         "icon-sm": "size-8",
         "icon-lg": "size-10",
+        "elongatis": "h-7.5 py-0.5 px-5"
       },
     },
     defaultVariants: {
