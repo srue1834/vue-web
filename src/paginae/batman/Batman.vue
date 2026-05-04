@@ -8,6 +8,8 @@ import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
+import { toast } from 'vue-sonner'
+
 
 import {
   Select,
@@ -26,6 +28,7 @@ import {
 
 import type { DateValue } from 'reka-ui';
 import { ref } from 'vue';
+import { Loader2, Phone, MapPin, Mail, MessageCircle, X, Instagram, Linkedin, LucideBadgeCheck } from 'lucide-vue-next';
 
 const photos = ["justice", "arkham", "superman", "varios", "villana", "villano", "grupo", "robin", "anne", "joker", "resplandor", "cat", "gafas", "league", "fondoVerde"]; 
 
@@ -55,6 +58,40 @@ const menuItems = [
 ]
 
 const dies = ref<DateValue>()
+const nomen = ref<string>('')
+const cognomen = ref<string>('')
+const missio = ref<string>('')
+
+const estLoading = ref<boolean>(false)
+    
+
+const mittereSubmit = async() => {
+    estLoading.value = true
+    toast(`Solicitud enviada correctamente
+    - Nombre: ${nomen.value} ${cognomen.value}
+    - Misión: ${missio.value}
+    Fecha: ${dies.value ? `${dies.value.day}/${dies.value.month}/${dies.value.year}`:'No especificada'}`, {
+        duration: 4000,
+        position: "top-right",
+        icon: LucideBadgeCheck,
+        style: {
+            background: "#201C3B",
+            color: "#fff",
+            whiteSpace: "pre-wrap"
+        }
+    })
+    await new Promise(resolve => setTimeout(resolve, 2000))
+    
+    estLoading.value = false
+    nomen.value = ''
+    cognomen.value = ''
+    missio.value = ''
+    dies.value = undefined
+    
+
+}
+
+
 </script>
 
 <template>
@@ -147,24 +184,27 @@ const dies = ref<DateValue>()
                         <!-- Formulario -->
                     <div class="w-full max-w-md mx-auto lg:max-w-none lg:w-1/2 ">
 
-                        <form  class="space-y-6 bg-white p-8 rounded-lg shadow-lg aspect-square">
+                        <form  
+                            class="space-y-6 bg-white p-8 rounded-lg shadow-lg aspect-square"
+                            @submit.prevent="mittereSubmit"
+                        >
                             <div class="space-y-2">
                                     
                                 <Label for="nomen">Nombre</Label>
-                                <Input id="nomen"/>
+                                <Input id="nomen" v-model="nomen" required/>
 
                             </div>
                                 
                             <div class="space-y-2">
                                 
                                 <Label for="cognomen">Apellidos</Label>
-                                <Input id="cognomen"/>
+                                <Input id="cognomen" v-model="cognomen" required/>
 
                             </div>
 
                             <div class="space-y-2">
 
-                                <Select>
+                                <Select required v-model="missio">
                                     <SelectTrigger class="border-gray-200 bg-white text-gray-900">
                                         <SelectValue placeholder="Selecciona una misión" />
                                     </SelectTrigger>
@@ -212,8 +252,12 @@ const dies = ref<DateValue>()
                                 <Button
                                     type="submit"
                                     class="w-full bg-[rgb(106,90,205)] hover:bg-[rgb(88,75,171)] text-white text-md mt-4"
+                                    :disabled="estLoading"
                                 >
-                                    Enviar solicitud
+                                    <Loader2 v-if="estLoading" class="animate-spin h-4 w-4 mr-2"/>
+                                    <span v-if="estLoading">Enviando...</span>
+                                    <span v-else>Enviar solicitud</span>
+
                                 </Button>
                                 
                         </form>
@@ -231,17 +275,17 @@ const dies = ref<DateValue>()
                         
                     <div class="space-y-2">
                         <p class="flex items-center gap-2 justify-center md:justify-start">
-
+                            <Phone class="w-5 h-5"/>
                             +1 (555) 123-4567
 
                         </p>
                         <p class="flex items-center gap-2 justify-center md:justify-start">
-
+                            <Mail class="w-5 h-5"/>
                             batman@wayneenterprises.com
 
                         </p>
                         <p class="flex items-center gap-2 justify-center md:justify-start">
-
+                            <MapPin class="w-5 h-5"/>
                             Wayne Manor, Gotham City
 
                         </p>
@@ -252,11 +296,11 @@ const dies = ref<DateValue>()
                 <div class="space-y-4 text-center md:text-left text-gray-400">
                     <h3 class="text-xl font-bold text-white">Síguenos</h3>
                     <div class="flex gap-8 justify-center">
-                    
-                        Icono de X -
-                        Icono de Instagram -
-                        Icono de Linkedin - 
-                        Icono de MessageCircle
+                        <X class="w-5 h-5"/>
+                        <Instagram class="w-5 h-5"/>
+                        <Linkedin class="w-5 h-5"/>
+                        <MessageCircle class="w-5 h-5"/>
+                        
                             
                     </div>
                 </div>
