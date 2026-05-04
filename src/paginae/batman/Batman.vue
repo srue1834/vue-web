@@ -4,6 +4,28 @@ import { scrollToSection } from '@/utils/scrollToSection';
 import { useMouseMotio } from '@/composables/useMouseMotio';
 import CarrusImaginum from '@/components/CarrusImaginum.vue';
 import NavigatorPrimarius from '@/components/NavigatorPrimarius.vue';
+import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { Calendar } from '@/components/ui/calendar'
+
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
+
+import type { DateValue } from 'reka-ui';
+import { ref } from 'vue';
 
 const photos = ["justice", "arkham", "superman", "varios", "villana", "villano", "grupo", "robin", "anne", "joker", "resplandor", "cat", "gafas", "league", "fondoVerde"]; 
 
@@ -31,6 +53,8 @@ const menuItems = [
         onClick: () => scrollToSection('#contactus')
     }
 ]
+
+const dies = ref<DateValue>()
 </script>
 
 <template>
@@ -94,8 +118,150 @@ const menuItems = [
                 :photos="photos"
                 :autoplay-delay="3000"
             />
-
         </section>
+
+        <section id="contactus" class="w-full py-12 bg-gray-100">
+
+            <div class="container mx-auto max-w-5xl px-4">
+
+                <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Contacta con Batman</h2>
+                    
+                <div class="flex flex-col lg:flex-row gap-8 items-center">
+
+                        <!-- Mapa de Google Maps -->
+                    <div class="hidden lg:block w-full lg:w-1/2 rounded-lg overflow-hidden shadow-lg">
+                        <div class="aspect-square">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3079.495076872935!2d-0.3410958!3d39.4807342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd60487c5d604077%3A0x150fdf31fdc5a6f6!2sUniversitat%20Polit%C3%A8cnica%20de%20Val%C3%A8ncia%20(UPV)!5e0!3m2!1ses!2sgt!4v1777931767123!5m2!1ses!2sgt" 
+                                width="600" 
+                                height="450" 
+                                :style="{border:0}"
+                                allowfullscreen
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"
+                            ></iframe>
+                            
+                        </div>
+                    </div>
+
+                        <!-- Formulario -->
+                    <div class="w-full max-w-md mx-auto lg:max-w-none lg:w-1/2 ">
+
+                        <form  class="space-y-6 bg-white p-8 rounded-lg shadow-lg aspect-square">
+                            <div class="space-y-2">
+                                    
+                                <Label for="nomen">Nombre</Label>
+                                <Input id="nomen"/>
+
+                            </div>
+                                
+                            <div class="space-y-2">
+                                
+                                <Label for="cognomen">Apellidos</Label>
+                                <Input id="cognomen"/>
+
+                            </div>
+
+                            <div class="space-y-2">
+
+                                <Select>
+                                    <SelectTrigger class="border-gray-200 bg-white text-gray-900">
+                                        <SelectValue placeholder="Selecciona una misión" />
+                                    </SelectTrigger>
+
+                                    <SelectContent>
+                                        <SelectGroup>
+                                            <SelectItem value="rescatare">
+                                                Rescate de rehenes
+                                            </SelectItem>
+                                            <SelectItem value="investigare">
+                                                Investigación criminal
+                                            </SelectItem>
+                                            <SelectItem value="persequi">
+                                                Persecución de villanos
+                                            </SelectItem>
+                                            <SelectItem value="defendere">
+                                                Defensa de Gotham
+                                            </SelectItem>
+                                           
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
+
+                            </div>
+
+                            <div class="space-y-2">
+
+                                <Label>Fecha de la misión</Label>
+                                <Popover>
+                                    <PopoverTrigger asChild>
+                                        <Button variant="outline">
+                                            <span v-if="dies">
+                                                {{ dies.day }}/{{ dies.month }}/{{ dies.year }}
+                                            </span>
+                                            <span v-else class="text-gray-500">
+                                                Selecciona una fecha
+                                            </span>
+                                        </Button>
+                                    </PopoverTrigger>
+                                    <PopoverContent class="w-80">
+                                        <Calendar v-model="dies"/>
+                                    </PopoverContent>
+                                </Popover>
+                            </div>
+                                <Button
+                                    type="submit"
+                                    class="w-full bg-[rgb(106,90,205)] hover:bg-[rgb(88,75,171)] text-white text-md mt-4"
+                                >
+                                    Enviar solicitud
+                                </Button>
+                                
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="w-full bg-gray-900 text-gray-300 py-12">
+            <div class="flex flex-col md:flex-row md:justify-around gap-8 max-w-3xl mx-auto">
+
+                <div class="space-y-4 text-center md:text-left">
+
+                    <h3 class="text-xl font-bold text-white">Información de Contacto</h3>
+                        
+                    <div class="space-y-2">
+                        <p class="flex items-center gap-2 justify-center md:justify-start">
+
+                            +1 (555) 123-4567
+
+                        </p>
+                        <p class="flex items-center gap-2 justify-center md:justify-start">
+
+                            batman@wayneenterprises.com
+
+                        </p>
+                        <p class="flex items-center gap-2 justify-center md:justify-start">
+
+                            Wayne Manor, Gotham City
+
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Redes sociales -->
+                <div class="space-y-4 text-center md:text-left text-gray-400">
+                    <h3 class="text-xl font-bold text-white">Síguenos</h3>
+                    <div class="flex gap-8 justify-center">
+                    
+                        Icono de X -
+                        Icono de Instagram -
+                        Icono de Linkedin - 
+                        Icono de MessageCircle
+                            
+                    </div>
+                </div>
+            </div>
+        </footer>
 
     </div>
 
