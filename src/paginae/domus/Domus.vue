@@ -14,9 +14,6 @@ import { ref } from 'vue';
 const dialogApertaEst = ref<boolean>(false)
 const quaestio = ref<string>('')
 
-
-
-
 </script>
 
 <template>
@@ -73,7 +70,4 @@ const quaestio = ref<string>('')
     </div>
 </template>
 
-<style scoped>
-
-
-</style>
+<style scoped></style>

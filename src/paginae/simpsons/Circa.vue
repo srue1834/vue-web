@@ -44,5 +44,4 @@ const imagoCirca = ref<string>('lisa.png')
     </div>
 </template>
 
-
 <style scoped></style>

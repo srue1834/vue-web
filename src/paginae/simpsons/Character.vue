@@ -100,28 +100,32 @@ const selectedLabel = computed(() => {
 
         </div>
         
-        <div 
-            class="flex flex-col lg:flex-row lg:justify-between md:items-center gap-8"
-        >
+        <div class="flex flex-col lg:flex-row lg:justify-between md:items-center gap-8">
             <div>
-                <h1 class="titulus-quote"> 
+                <h1 class="mb-5 text-3xl font-bold leading-9 lg:text-5xl lg:leading-none"> 
                     {{ character.nomen }}
                 </h1>
 
-                <div class="info-quote">
-                    <p class="descriptione">
+                <div class="lg:max-w-3xl">
+                    <p class="mb-10 max-w-3xl text-xl font-light leading-7 lg:text-2xl lg:leading-8">
                         {{ character.descriptione }}
                     </p>
                             
-                    <div class="arca-quote" @click="router.push('/simpsons/gallery')">
-                        <p class="quote"> « {{ character.quote }} »</p>
+                    <div 
+                        class="flex max-w-3xl cursor-pointer items-center justify-center rounded-lg border border-black bg-red-500 p-5"
+                        @click="router.push('/simpsons/gallery')"
+                    >
+                        <p class="mb-5 text-center text-[1.8rem] font-extralight leading-[2.2rem] text-white lg:text-[2.2rem] lg:leading-10"> 
+                            « {{ character.quote }} »
+                        </p>
                     </div>
                 </div>
             </div>
         
 
-            <figure class="figure-quote">
-                <img 
+            <figure class="flex min-w-min justify-center">
+                <img
+                    class="object-contain"
                     :src="`/imagines/simpsons/${character.imago}`" alt="" 
                 />
             </figure>
@@ -130,79 +134,4 @@ const selectedLabel = computed(() => {
     
 </template>
 
-
-
-<style scoped>
-    .titulus-quote {
-        font-weight: 700;
-        font-size: 1.875rem;
-        line-height: 2.25rem;
-        margin-bottom: 1.25rem;
-    }
-
-    @media (min-width: 1024px) {
-        .titulus-quote {
-            font-size: 3rem;
-            line-height: 1;
-        }
-    }
-
-    .arca-quote {
-        background-color: rgb(239 68 68);
-        padding: 1.25rem;
-        border-radius: 0.5rem;
-        cursor: pointer;
-        border: 1px solid black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        max-width: 48rem;
-    }
-    
-    .quote {
-        color: white;
-        text-align: center;
-        font-weight: 200;
-        font-size: 1.8rem;
-        line-height: 2.2rem;
-        margin-bottom: 1.25rem; 
-    }
-    
-    @media (min-width: 1024px) {
-        .quote {
-            font-size: 2.2rem;
-            line-height: 2.5rem;
-        }
-    }
-    
-    .descriptione {
-        font-size: 1.25rem;
-        line-height: 1.75rem;
-        font-weight: 300;
-        margin-bottom: 2.5rem;
-        max-width: 48rem;
-    }
-    
-    @media (min-width: 1024px) {
-        .descriptione {
-            font-size: 1.5rem;
-            line-height: 2rem;
-        }
-    }
-    
-    @media (min-width: 1024px) {
-        .info-quote {
-            max-width: 48rem;
-        }
-    }
-
-    .figure-quote {
-        display: flex;
-        justify-content: center;
-        min-width: min-content;
-    }
-
-    .figure-quote > img {
-        object-fit: contain;
-    }
-</style>
+<style scoped></style>

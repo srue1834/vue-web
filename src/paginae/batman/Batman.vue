@@ -95,61 +95,73 @@ const mittereSubmit = async() => {
 </script>
 
 <template>
-    <div class="batman">
-        <NavigatorPrimarius :items="menuItems" home-route="/"/>
-        <header class="titulus">
-            <h1>Batman</h1>
-            <div 
-                id="titulus-batman" 
-                class="titulus-img"
+    <div class="font-sans">
+        <NavigatorPrimarius :items="menuItems" home-route="/" />
+  
+        <header class="relative">
+            <h1 class="pointer-events-none absolute top-[50vw] w-full text-center text-7xl text-white font-[batman]">
+                Batman
+            </h1>
+    
+            <div
+                id="titulus-batman"
+                class="aspect-8/7 bg-[url('/imagines/batman/batman.jpg')] bg-size-[100%_100%] bg-center transition-[background-size] duration-300 hover:bg-size-[115%_115%]"
                 @mousemove="cumMouseMove"
                 @mouseleave="cumMouseLeave"
                 :style="{
-                    backgroundPositionX: `calc(50% + ${mousePositione.x}px)`,
-                    backgroundPositionY: `calc(50% + ${mousePositione.y}px)`,
-                    transition: 'background-position 0.1s ease-out'
-                }"
-
-            ></div>
-            <p>Él puede tomar la decisión que nadie más puede, la decisión correcta</p>
+                backgroundPositionX: `calc(50% + ${mousePositione.x}px)`,
+                backgroundPositionY: `calc(50% + ${mousePositione.y}px)`,
+                transition: 'background-position 0.1s ease-out, background-size 0.3s ease'
+                }">
+            </div>
+    
+            <p class="pointer-events-none absolute top-[25vw] hidden w-full text-center text-3xl text-white font-[batman] md:block">
+                Él puede tomar la decisión que nadie más puede, la decisión correcta
+            </p>
         </header>
-
-        <section id="vehiculis">
-            <div class="vehiculis-arca">
-                <div class="item unus">
-                    <div class="notitia">
-                        <h2>Avión</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula vulputate elit eget fermentum. Ut laoreet ante lacus. Quisque ut tincidunt metus. Curabitur congue, arcu nec tempus sodales, neque sem ultrices mauris, eu tincidunt nibh nibh eu massa. Aenean rhoncus quis nibh ac facilisis.</p>
-                        <small>Fabricado en 2005</small>
+  
+        <section
+            id="vehiculis"
+            class="mx-auto flex max-w-127.5 flex-col py-16 sm:max-w-xl md:max-w-225 lg:max-w-7xl"
+        >
+            <div class="order-1 flex flex-col lg:flex-row">
+                <div class="order-2 flex h-135 flex-col items-center justify-around bg-[rgba(220,220,220,0.2)] py-6 md:h-80 md:flex-row lg:h-140 lg:flex-col">
+                    <div class="flex w-[90%] flex-col items-center md:w-[40%] lg:w-[90%]">
+                        <h2 class="pb-4 text-[1.7rem] font-semibold text-black/70">Avión</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula vulputate elit eget fermentum. Ut laoreet ante lacus. Quisque ut tincidunt metus.</p>
+                        <small class="p-4 font-bold">Fabricado en 2005</small>
                     </div>
-                    <img src="/imagines/batman/avion.jpg"/>
+                    <img class="w-112.5 md:order-first lg:order-0" src="/imagines/batman/avion.jpg" />
                 </div>
-
-                <div class="item duo">
-                    <div class="notitia">
-                    <h2>Moto</h2>
-                    <p>Nulla aliquip cupidatat voluptate veniam nostrud aliquip sit enim officia. Sit eu pariatur officia qui dolor adipisicing cupidatat. Sit consectetur et eu ut esse laboris nulla.</p>
-                    <small>Fabricado en 2006</small>
+    
+                <div class="flex h-135 flex-col items-center justify-around bg-[rgba(220,220,220,0.8)] py-6 md:h-80 md:flex-row lg:h-140 lg:flex-col">
+                    <div class="flex w-[90%] flex-col items-center md:w-[40%] lg:w-[90%]">
+                        <h2 class="pb-4 text-[1.7rem] font-semibold text-black/70">Moto</h2>
+                        <p>Nulla aliquip cupidatat voluptate veniam nostrud aliquip sit enim officia. Sit eu pariatur officia qui dolor adipisicing cupidatat.</p>
+                        <small class="p-4 font-bold">Fabricado en 2006</small>
                     </div>
-                    <img src="/imagines/batman/moto.jpg"/>
+                    <img class="w-112.5" src="/imagines/batman/moto.jpg" />
                 </div>
-            
-                <div class="item tribus">
-                    <div class="notitia">
-                    <h2>Coche</h2>
-                    <p>Irure adipisicing est minim eu ad dolor. Eu ea commodo pariatur ut occaecat in cupidatat reprehenderit ut laborum duis. Sunt minim ex fugiat reprehenderit. Lorem consectetur reprehenderit commodo non</p>
-                    <small>Fabricado en 2007</small>
+    
+                <div class="order-3 flex h-135 flex-col items-center justify-around bg-[rgba(220,220,220,0.8)] py-6 md:h-80 md:flex-row lg:h-140 lg:flex-col">
+                    <div class="flex w-[90%] flex-col items-center md:w-[40%] lg:w-[90%]">
+                        <h2 class="pb-4 text-[1.7rem] font-semibold text-black/70">Coche</h2>
+                        <p>Irure adipisicing est minim eu ad dolor. Eu ea commodo pariatur ut occaecat in cupidatat reprehenderit ut laborum duis.</p>
+                        <small class="p-4 font-bold">Fabricado en 2007</small>
                     </div>
-                    <img src="/imagines/batman/car.jpg"/>
+                    <img class="w-112.5" src="/imagines/batman/car.jpg" />
                 </div>
             </div>
-
-            <div class="vehiculis-titulus">
+    
+            <div class="flex h-22 items-center justify-center bg-black/70 text-3xl text-white">
                 <h1>Vehículos de Batman</h1>
             </div>
         </section>
-
-        <section id="videre" class="bg-gray-900 w-full flex justify-center items-center min-h-[60vh] lg:min-h-[95vh]">
+  
+        <section
+            id="videre"
+            class="flex min-h-[60vh] w-full items-center justify-center bg-gray-900 lg:min-h-[95vh]"
+        >
             <CarrusImaginum
                 base-path="/imagines/batman"
                 :photos="photos"
@@ -311,165 +323,4 @@ const mittereSubmit = async() => {
 
 </template>
 
-<style scoped>
-    .batman {
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .titulus-img {
-        background-size: 100% 100%;
-        aspect-ratio: 8 / 7;
-        background-position: center center;
-        background-image: url("../imagines/batman/batman.jpg");
-    }
-
-    .titulus-img:hover {
-        background-size: 115% 115%;
-    }
-
-    .titulus > h1 {
-        position: absolute;
-        top: calc(100vw * 0.5);
-        width: 100%;
-        text-align: center;
-        font-size: 5rem; 
-        color: white;
-        pointer-events:none; 
-        font-family: batman;
-    }
-
-    .titulus > p {
-        position: absolute;
-        top: calc(100vw * 0.25);
-        width: 100%;
-        text-align: center;
-        font-size: 2rem;
-        color: white;
-        pointer-events:none;
-        display: none;
-        font-family: batman;
-    }
-
-
-    @media (min-width:768px) {
-        .titulus > p {
-            display: block;
-        }
-    }
-    
-
-    #vehiculis {
-        max-width: 510px;
-        margin: 0 auto;
-        padding: 4rem 0;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .vehiculis-arca {
-        order: 1;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .vehiculis-titulus {
-        height: 5.5rem; /* 88px */
-        font-size: 2rem;
-        background-color: rgba(0, 0, 0, 0.7);
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .item {
-        padding: 1.5rem 0;
-        height: 540px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-    }
-
-    .item > img {
-        width: 450px;
-    }
-
-    .unus {
-        order: 2;
-        background-color: rgba(220, 220, 220, 0.2) ; 
-    }
-
-    .duo {
-        background-color: rgba(220, 220, 220, 0.8);
-    }
-
-    .tribus {
-        order: 3;
-        background-color: rgba(220, 220, 220, 0.8);
-    }
-    
-    .notitia {
-        width: 90%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .notitia > small {
-        font-weight: bold;
-        padding: 1rem;
-    }
-    
-    .notitia > h2 {
-        font-size: 1.7rem; 
-        font-weight: 600;
-        color: rgba(0, 0, 0, 0.7);
-        padding-bottom: 1rem;
-    } 
-
-    @media (min-width: 640px) {
-        #vehiculis {
-            max-width: 576px;
-        }
-    }
-
-    @media (min-width: 768px) {
-        #vehiculis {
-            max-width: 900px;
-        }
-
-        .item {
-            flex-direction: row;
-            height: 320px;
-        }
-
-        .notitia {
-            width: 40%;
-        }
-
-        .unus > img {
-            order: -1;
-        }
-    }
-
-    @media (min-width: 1024px) {
-        #vehiculis {
-            max-width: 1280px;
-        }
-
-        .item {
-            flex-direction: column;
-            height: 560px;
-        }
-
-        .vehiculis-arca {
-            flex-direction: row;
-        }
-
-        .notitia {
-            width: 90%;
-        }
-        
-    }
-
-</style>
+<style scoped></style>

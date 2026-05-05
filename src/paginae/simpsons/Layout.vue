@@ -46,6 +46,4 @@ import Button from '@/components/ui/button/Button.vue';
     </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
